@@ -45,7 +45,7 @@ var (
 			}
 
 			payload := slack.Payload{
-				Username:    "leedonggyu",
+				Username:    "ZENT-Slack-Devops-Bot",
 				Channel:     sn.Channel,
 				IconEmoji:   ":fire:",
 				Attachments: []slack.Attachment{getSlackAttachment()},

@@ -29,5 +29,5 @@ prod-test: clean
 	-p https://google.com -o https://naver.com
 
 upload: build
-	aws s3 cp slack-arm64 s3://zent-devops-jobs --profile zent-dev
-	aws s3 cp slack-arm64 s3://zent-devops-shared-jobs --profile zent-root
+	aws s3 cp slack-arm64 s3://zent-devops-jobs/slack --profile zent-dev
+	aws s3 cp slack-arm64 s3://zent-devops-shared-jobs/slack --profile zent-root

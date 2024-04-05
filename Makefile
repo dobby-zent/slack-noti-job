@@ -1,17 +1,25 @@
+## Not Call
 clean:
-	rm -rf slack
+	rm -rf slack-*
+
+## Not Call
+build-linux:
+	go build -o slack-linux main.go
+
+## Not Call
+build-arm: 
+	GOARCH=arm64 GOOS=linux go build -o slack-arm64 main.go
+
+######################################## Use this ########################################
+build: clean
+	@make build-linux
+	@make build-arm
 
 dev:
 	go run main.go
 
-build: clean
-	go build -o slack main.go
-
-build-arm: clean
-	GOARCH=arm64 GOOS=linux go build -o slack main.go
-
-prod: build
-	./slack
+prod:
+	./slack-linux
 
 prod-test: clean
 	@make build
@@ -20,5 +28,6 @@ prod-test: clean
 	-t leedonggyu -m hello-world -e dev -s heyboy  \
 	-p https://google.com -o https://naver.com
 
-upload:
-	aws s3 cp slack s3://zent-devops-jobs
+upload: build
+	aws s3 cp slack-arm64 s3://zent-devops-jobs --profile zent-dev
+	aws s3 cp slack-arm64 s3://zent-devops-shared-jobs --profile zent-root

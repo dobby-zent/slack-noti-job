@@ -1,5 +1,14 @@
 # Slack Noti Job
 
+## Description
+
+- CodePipeline 내에 사용될 Slack WebHook 입니다
+
+```sh
+    ## dev, prod bucket 배포
+    make upload
+```
+
 ## Dependency
 
 - github.com/ashwanthkumar/slack-go-webhook
